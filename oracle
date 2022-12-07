@@ -1,0 +1,21 @@
+#!/bin/sh
+# chkconfig: 2345 20 80
+     # description: start and stop webspere server1 with service command
+     #WEB start
+case "$1" in
+    start)
+        echo "starting oracle"
+        sleep 2
+        su - oracle -c"/home/u01/app/oracle/product/11.2.0/db_1/bin/lsnrctl start"
+        su - oracle -c"/home/u01/app/oracle/product/11.2.0/db_1/bin/dbstart"
+ 
+        ;;
+    stop)
+        echo "stoping oracle"
+        su - oracle -c"/home/u01/app/oracle/product/11.2.0/db_1/bin/dbshut"
+        su - oracle -c"/home/u01/app/oracle/product/11.2.0/db_1/bin/lsnrctl stop"
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+esac

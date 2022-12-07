@@ -1,0 +1,18 @@
+#!/bin/sh
+# chkconfig: 2345 20 80
+     # description: start and stop webspere server1 with service command
+     #WEB start
+case "$1" in
+    start)
+        echo "starting Websphere"
+        sleep 2
+        /home/was8552/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/startServer.sh server1 
+        ;;
+    stop)
+        echo "stoping Websphere"
+        /home/was8552/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/stopServer.sh server1 -username admin -password admin505
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+esac
